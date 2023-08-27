@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "@emotion/react";
+import { Container, CssBaseline, createTheme } from "@mui/material";
+import { useSelector } from "react-redux";
+import { selectMode } from "./store/mode/modeSlice";
+import { useMemo } from "react";
+import { themeSettings } from "./theme";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AllCountriesPage from "./scenes/AllCountriesPage";
+import Navbar from "./components/Navbar";
+import CountryPage from "./scenes/CountryPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const mode = useSelector(selectMode);
+    const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <Container maxWidth="container1440px">
+                <BrowserRouter>
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<AllCountriesPage />} />
+                        <Route
+                            path="/country/:countryId"
+                            element={<CountryPage />}
+                        />
+                    </Routes>
+                </BrowserRouter>
+            </Container>
+        </ThemeProvider>
+    );
 }
 
 export default App;
