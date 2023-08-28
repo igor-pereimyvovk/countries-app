@@ -1,5 +1,5 @@
 import { useTheme } from "@emotion/react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, makeStyles } from "@mui/material";
 import ItemWrapper from "./UI/ItemWrapper";
 import ItemText from "./UI/ItemText";
 import ItemAllText from "./UI/ItemAllText";
@@ -22,6 +22,7 @@ const CountryItem = ({ country }) => {
                 <img
                     style={{
                         objectFit: "cover",
+                        transition: "transform 0.3s ease",
                     }}
                     src={country.flags.png}
                     alt={country.flags.alt}

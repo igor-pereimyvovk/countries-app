@@ -7,20 +7,21 @@ import {
 import CountryItem from "./CountryItem";
 import { nanoid } from "@reduxjs/toolkit";
 import GridSystem from "./UI/GridSystem";
+import { useCountries } from "../hooks/useCountries";
 
 const CountiesList = ({ search, region }) => {
     const countries = useSelector(selectAllCounties);
     const dispatch = useDispatch();
 
+    const filteredCounties = useCountries(countries, search);
+
     useEffect(() => {
         dispatch(fetchAllCounties());
     }, []);
 
-    console.log(countries);
-
     return (
         <GridSystem>
-            {countries.map((country) => (
+            {filteredCounties.map((country) => (
                 <CountryItem key={nanoid()} country={country} />
             ))}
         </GridSystem>
