@@ -1,6 +1,7 @@
-import HomeWrapper from "../components/UI/HomeWrapper";
 import { useState } from "react";
+import HomeWrapper from "../components/UI/HomeWrapper";
 import SearchFilterPanel from "../components/SearchFilterPanel";
+import CountiesList from "../components/CountiesList";
 
 const HomePage = () => {
     const [search, setSearch] = useState("");
@@ -14,6 +15,7 @@ const HomePage = () => {
                 region={region}
                 setRegion={setRegion}
             />
+            <CountiesList />
         </HomeWrapper>
     );
 };

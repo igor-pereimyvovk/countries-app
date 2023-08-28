@@ -16,7 +16,12 @@ const LightDarkMode = () => {
     };
 
     return (
-        <Box display="flex" alignItems="center" gap={0.5}>
+        <Box
+            display="flex"
+            alignItems="center"
+            width="125px"
+            justifyContent="space-between"
+        >
             <IconButton
                 onClick={handleClick}
                 sx={{

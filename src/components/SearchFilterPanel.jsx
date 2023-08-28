@@ -9,7 +9,12 @@ const SearchFilterPanel = ({ search, setSearch, region, setRegion }) => {
     };
 
     return (
-        <Box display="flex" justifyContent="space-between" alignItems="center">
+        <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+            mb="2.7rem"
+        >
             <SearchCountry
                 value={search}
                 onChange={handleChangeSearch}

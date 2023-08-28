@@ -44,7 +44,7 @@ export const themeSettings = (mode) => {
                     mode === "light" ? "hsl(200, 15%, 8%)" : "hsl(0, 0%, 100%)",
             },
             body1: {
-                fontSize: "14px",
+                fontSize: "15px",
             },
             body2: {
                 fontSize: "16px",

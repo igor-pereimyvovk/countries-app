@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { Select } from "@mui/material";
 
 const SelectCountryStyled = styled(Select)(({ theme }) => ({
-    width: "180px",
+    width: "192px",
     background: theme.palette.background.alt,
     boxShadow:
         theme.palette.mode === "light"

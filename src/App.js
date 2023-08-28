@@ -22,7 +22,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route
-                            path="/country/:countryId"
+                            path="/country/:countryName"
                             element={<CountryPage />}
                         />
                     </Routes>
