@@ -1,14 +1,13 @@
-import { Box, InputAdornment, Select } from "@mui/material";
+import { Box, InputAdornment } from "@mui/material";
 import SearchCountry from "./UI/SearchCountry";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import SelectCountry from "./UI/SelectCountry";
 
 const SearchFilterPanel = ({ search, setSearch, region, setRegion }) => {
     const handleChangeSearch = (e) => {
         setSearch(e.target.value);
     };
-    const handleChangeRegion = (e) => {
-        setRegion(e.target.value);
-    };
+
     return (
         <Box display="flex" justifyContent="space-between" alignItems="center">
             <SearchCountry
@@ -26,7 +25,7 @@ const SearchFilterPanel = ({ search, setSearch, region, setRegion }) => {
                     ),
                 }}
             />
-            <Select value={region} onChange={handleChangeRegion}></Select>
+            <SelectCountry region={region} setRegion={setRegion} />
         </Box>
     );
 };
