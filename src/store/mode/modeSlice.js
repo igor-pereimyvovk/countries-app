@@ -8,6 +8,7 @@ const modeSlice = createSlice({
     reducers: {
         toggleMode(state) {
             state = state === "light" ? "dark" : "light";
+            return state;
         },
     },
 });

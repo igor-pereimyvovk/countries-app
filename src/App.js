@@ -5,7 +5,7 @@ import { selectMode } from "./store/mode/modeSlice";
 import { useMemo } from "react";
 import { themeSettings } from "./theme";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AllCountriesPage from "./scenes/AllCountriesPage";
+import HomePage from "./scenes/HomePage";
 import Navbar from "./components/Navbar";
 import CountryPage from "./scenes/CountryPage";
 
@@ -20,7 +20,7 @@ function App() {
                 <BrowserRouter>
                     <Navbar />
                     <Routes>
-                        <Route path="/" element={<AllCountriesPage />} />
+                        <Route path="/" element={<HomePage />} />
                         <Route
                             path="/country/:countryId"
                             element={<CountryPage />}
