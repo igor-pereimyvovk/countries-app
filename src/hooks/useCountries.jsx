@@ -1,18 +1,25 @@
 import { useMemo } from "react";
 
-export const useCountries = (countries, search) => {
-    const filteredPosts = useMemo(() => {
+export const useCountries = (countries, search, region) => {
+    let filteredCounties = useMemo(() => {
         if (search) {
-            return countries.filter((country) => {
-                return country.name.common
-                    .toLowerCase()
-                    .includes(search.toLowerCase());
-            });
+            return countries.filter((country) =>
+                country.name.common.toLowerCase().includes(search.toLowerCase())
+            );
         }
 
         return countries;
     }, [search, countries]);
 
-    // TODO: SELECT
-    return filteredPosts;
+    filteredCounties = useMemo(() => {
+        if (region) {
+            return filteredCounties.filter(
+                (country) => country.region === region
+            );
+        }
+
+        return filteredCounties;
+    }, [region, filteredCounties]);
+
+    return filteredCounties;
 };

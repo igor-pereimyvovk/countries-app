@@ -1,10 +1,13 @@
 import { useTheme } from "@emotion/react";
-import { Box, Typography, makeStyles } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import ItemWrapper from "./UI/ItemWrapper";
 import ItemText from "./UI/ItemText";
 import ItemAllText from "./UI/ItemAllText";
+import { useSelector } from "react-redux";
+import { selectStatus } from "../store/countries/countriesSlice";
 
 const CountryItem = ({ country }) => {
+    const status = useSelector(selectStatus);
     const theme = useTheme();
 
     return (

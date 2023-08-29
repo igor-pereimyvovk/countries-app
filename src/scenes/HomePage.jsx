@@ -15,7 +15,7 @@ const HomePage = () => {
                 region={region}
                 setRegion={setRegion}
             />
-            <CountiesList search={search} />
+            <CountiesList search={search} region={region} />
         </HomeWrapper>
     );
 };
