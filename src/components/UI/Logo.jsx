@@ -15,6 +15,9 @@ const Logo = () => {
                     [":hover"]: {
                         opacity: 0.7,
                     },
+                    ["@media(max-width:570px)"]: {
+                        fontSize: "18px",
+                    },
                 }}
             >
                 Where in the world?

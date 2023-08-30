@@ -21,17 +21,34 @@ const LightDarkMode = () => {
             alignItems="center"
             width="125px"
             justifyContent="space-between"
+            sx={{
+                ["@media(max-width:570px)"]: {
+                    width: "100px",
+                },
+            }}
         >
             <IconButton
                 onClick={handleClick}
                 sx={{
                     p: "5px",
                     color: theme.palette.primary.main,
+                    ["@media(max-width:570px)"]: {
+                        fontSize: "12px",
+                    },
                 }}
             >
                 {mode === "light" ? <DarkModeOutlinedIcon /> : <DarkModeIcon />}
             </IconButton>
-            <Typography variant="body2" fontWeight={600} lineHeight={1}>
+            <Typography
+                variant="body2"
+                fontWeight={600}
+                lineHeight={1}
+                sx={{
+                    ["@media(max-width:570px)"]: {
+                        fontSize: "12px",
+                    },
+                }}
+            >
                 {mode[0].toUpperCase() + mode.slice(1)} Mode
             </Typography>
         </Box>

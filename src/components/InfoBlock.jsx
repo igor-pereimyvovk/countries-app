@@ -9,6 +9,8 @@ import { getCountryInfo } from "../features/getCountryInfo";
 const InfoBlock = ({ country }) => {
     const [borders, setBorders] = useState([]);
 
+    console.log(country);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -31,12 +33,49 @@ const InfoBlock = ({ country }) => {
     const [nativeName, currencies, languages] = getCountryInfo(country);
 
     return (
-        <Box flex={1}>
-            <Typography variant="h4" fontWeight="bold" sx={{ mb: "1.5rem" }}>
+        <Box
+            flex={1}
+            sx={{
+                ["@media(max-width:570px)"]: {
+                    width: "100%",
+                    alignSelf: "flex-start",
+                },
+            }}
+        >
+            <Typography
+                variant="h4"
+                fontWeight="bold"
+                sx={{
+                    mb: "1.5rem",
+                    ["@media(max-width:1010px)"]: {
+                        textAlign: "center",
+                    },
+                    ["@media(max-width:570px)"]: {
+                        fontSize: "24px",
+                    },
+                }}
+            >
                 {country?.name?.official}
             </Typography>
-            <Box display="flex" justifyContent="space-between" mb="1.5rem">
-                <Box width="50%">
+            <Box
+                display="flex"
+                justifyContent="space-between"
+                mb="1.5rem"
+                sx={{
+                    ["@media(max-width:570px)"]: {
+                        flexDirection: "column",
+                        rowGap: "20px",
+                    },
+                }}
+            >
+                <Box
+                    width="50%"
+                    sx={{
+                        ["@media(max-width:570px)"]: {
+                            width: "100%",
+                        },
+                    }}
+                >
                     <InfoText title="Native Name" info={nativeName?.official} />
                     <InfoText
                         title="Population"
@@ -53,7 +92,17 @@ const InfoBlock = ({ country }) => {
                         info={country?.capital.join(", ")}
                     />
                 </Box>
-                <Box width="40%" display="flex" justifyContent="flex-end">
+                <Box
+                    width="40%"
+                    display="flex"
+                    justifyContent="flex-end"
+                    sx={{
+                        ["@media(max-width:570px)"]: {
+                            justifyContent: "normal",
+                            width: "100%",
+                        },
+                    }}
+                >
                     <Box>
                         <InfoText
                             title="Top Level Domain"

@@ -25,6 +25,13 @@ const SearchFilterPanel = ({ setSearch, region, setRegion }) => {
             justifyContent="space-between"
             alignItems="center"
             mb="2.7rem"
+            sx={{
+                ["@media(max-width:770px)"]: {
+                    flexDirection: "column",
+                    alignItems: "normal",
+                    gap: "33px",
+                },
+            }}
         >
             <SearchCountry
                 value={query}

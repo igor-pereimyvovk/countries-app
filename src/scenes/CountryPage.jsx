@@ -30,7 +30,13 @@ const CountryPage = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                gap="10%"
+                gap="9%"
+                sx={{
+                    ["@media(max-width:1010px)"]: {
+                        flexDirection: "column",
+                        rowGap: "30px",
+                    },
+                }}
             >
                 {country ? (
                     <>
@@ -60,10 +66,30 @@ const CountryPage = () => {
                         <Skeleton
                             variant="rounded"
                             height="350px"
-                            sx={{ flex: 1 }}
+                            sx={{
+                                flex: 1,
+                                ["@media(max-width:1010px)"]: {
+                                    width: "500px",
+                                    flex: "none",
+                                },
+                                ["@media(max-width:570px)"]: {
+                                    width: "265px",
+                                    maxHeight: "190px",
+                                },
+                            }}
                         />
                         <Box sx={{ flex: 1 }}>
-                            <Skeleton sx={{ mb: "25px" }} />
+                            <Skeleton
+                                sx={{
+                                    mb: "25px",
+                                    ["@media(max-width:1010px)"]: {
+                                        width: "450px",
+                                    },
+                                    ["@media(max-width:570px)"]: {
+                                        width: "220px",
+                                    },
+                                }}
+                            />
                             <Skeleton sx={{ mb: "12px" }} />
                             <Skeleton sx={{ mb: "12px" }} />
                             <Skeleton sx={{ mb: "12px" }} />

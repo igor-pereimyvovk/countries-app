@@ -8,6 +8,9 @@ const NavbarWrapper = styled("nav")(({ theme }) => ({
     padding: "1.5rem 5rem",
     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
     marginBottom: "2.7rem",
+    ["@media(max-width:570px)"]: {
+        padding: "2.5rem 1.2rem",
+    },
 }));
 
 export default NavbarWrapper;

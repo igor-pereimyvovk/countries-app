@@ -28,6 +28,12 @@ const SearchCountry = styled(TextField)(({ theme }) => ({
             },
         },
     },
+    ["@media(max-width:1010px)"]: {
+        width: "360px",
+    },
+    ["@media(max-width:770px)"]: {
+        width: "100%",
+    },
 }));
 
 export default SearchCountry;
