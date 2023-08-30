@@ -11,7 +11,7 @@ const CountryItem = ({ country }) => {
     const theme = useTheme();
 
     return (
-        <ItemWrapper>
+        <ItemWrapper to={`/country/${country.name.official}`}>
             <Box
                 height="158px"
                 sx={{

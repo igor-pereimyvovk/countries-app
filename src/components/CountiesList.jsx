@@ -23,13 +23,15 @@ const CountiesList = ({ search, region }) => {
     const [amount, isLoading] = usePaginate(filteredCounties.length);
 
     useEffect(() => {
-        dispatch(fetchAllCounties());
+        if (status === "idle") {
+            dispatch(fetchAllCounties());
+        }
     }, [dispatch]);
 
     return (
         <>
             <GridSystem>
-                {status === "pending"
+                {status === "pending" || status === "idle"
                     ? Array.from(new Array(24)).map((_, i) => (
                           <SkeletonListItem key={nanoid()} />
                       ))

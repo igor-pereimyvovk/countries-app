@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+    increaseDisplayedAmount,
+    selectDisplayedAmount,
+} from "../store/countries/countriesSlice";
 
 export const usePaginate = (countiesLength) => {
     const [isPaginationLoading, setIsPaginationLoading] = useState(false);
-    const [displayedAmount, setDisplayedAmount] = useState(12);
+    const displayedAmount = useSelector(selectDisplayedAmount);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         document.addEventListener("scroll", scrollHandler);
@@ -16,7 +22,7 @@ export const usePaginate = (countiesLength) => {
         if (isPaginationLoading) {
             setTimeout(() => {
                 setIsPaginationLoading(false);
-                setDisplayedAmount((prev) => prev + 8);
+                dispatch(increaseDisplayedAmount());
             }, 400);
         }
     }, [isPaginationLoading]);

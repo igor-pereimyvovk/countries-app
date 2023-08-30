@@ -13,7 +13,6 @@ const SearchCountry = styled(TextField)(({ theme }) => ({
         border: "none",
     },
     "& .MuiOutlinedInput-root": {
-        // fontWeight: "600",
         letterSpacing: "0.6px",
         color: theme.palette.neutral.inputText,
         "&.Mui-focused fieldset": {

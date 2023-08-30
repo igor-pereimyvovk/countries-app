@@ -15,6 +15,7 @@ export const themeSettings = (mode) => {
                 ? {
                       primary: {
                           main: "hsl(200, 15%, 8%)",
+                          secondary: "hsl(200, 15%, 20%)",
                       },
                       neutral: {
                           inputText: "hsl(0, 0%, 52%)",
@@ -27,6 +28,7 @@ export const themeSettings = (mode) => {
                 : {
                       primary: {
                           main: "hsl(0, 0%, 100%)",
+                          secondary: "hsl(0, 0%, 90%)",
                       },
                       neutral: {
                           inputText: "hsl(0, 0%, 100%)",

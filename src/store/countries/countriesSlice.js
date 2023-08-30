@@ -6,6 +6,7 @@ const ALL_COUNTRIES_URL =
 
 const initialState = {
     countries: [],
+    displayed: 12,
     status: "idle",
     error: null,
 };
@@ -22,7 +23,11 @@ export const fetchAllCounties = createAsyncThunk(
 const countriesSlice = createSlice({
     name: "countries",
     initialState,
-    reducers: {},
+    reducers: {
+        increaseDisplayedAmount(state) {
+            state.displayed += 8;
+        },
+    },
     extraReducers(builder) {
         builder
             .addCase(fetchAllCounties.pending, (state) => {
@@ -36,7 +41,10 @@ const countriesSlice = createSlice({
     },
 });
 
+export const selectDisplayedAmount = (state) => state.countries.displayed;
 export const selectStatus = (state) => state.countries.status;
 export const selectAllCounties = (state) => state.countries.countries;
+
+export const { increaseDisplayedAmount } = countriesSlice.actions;
 
 export default countriesSlice.reducer;
