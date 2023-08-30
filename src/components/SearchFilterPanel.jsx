@@ -2,11 +2,22 @@ import { Box, InputAdornment } from "@mui/material";
 import SearchCountry from "./UI/SearchCountry";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import SelectCountry from "./UI/SelectCountry";
+import { useEffect, useState } from "react";
 
-const SearchFilterPanel = ({ search, setSearch, region, setRegion }) => {
+const SearchFilterPanel = ({ setSearch, region, setRegion }) => {
+    const [query, setQuery] = useState("");
+
     const handleChangeSearch = (e) => {
-        setSearch(e.target.value);
+        setQuery(e.target.value);
     };
+
+    useEffect(() => {
+        const searchTimeout = setTimeout(() => {
+            setSearch(query);
+        }, 400);
+
+        return () => clearTimeout(searchTimeout);
+    }, [query]);
 
     return (
         <Box
@@ -16,7 +27,7 @@ const SearchFilterPanel = ({ search, setSearch, region, setRegion }) => {
             mb="2.7rem"
         >
             <SearchCountry
-                value={search}
+                value={query}
                 onChange={handleChangeSearch}
                 placeholder="Search for a country..."
                 InputProps={{

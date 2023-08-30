@@ -10,7 +10,6 @@ const HomePage = () => {
     return (
         <HomeWrapper>
             <SearchFilterPanel
-                search={search}
                 setSearch={setSearch}
                 region={region}
                 setRegion={setRegion}
