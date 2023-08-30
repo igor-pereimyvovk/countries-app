@@ -38,7 +38,10 @@ const CountiesList = ({ search, region }) => {
                     : filteredCounties
                           .slice(0, amount)
                           .map((country) => (
-                              <CountryItem key={nanoid()} country={country} />
+                              <CountryItem
+                                  key={country.population}
+                                  country={country}
+                              />
                           ))}
             </GridSystem>
             {isLoading && (
