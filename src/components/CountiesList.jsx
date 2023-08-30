@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     fetchAllCounties,
     selectAllCounties,
+    selectError,
     selectStatus,
 } from "../store/countries/countriesSlice";
 import CountryItem from "./CountryItem";
@@ -10,11 +11,12 @@ import { nanoid } from "@reduxjs/toolkit";
 import GridSystem from "./UI/GridSystem";
 import { useCountries } from "../hooks/useCountries";
 import SkeletonListItem from "./UI/SkeletonListItem";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import { usePaginate } from "../hooks/usePaginate";
 
 const CountiesList = ({ search, region }) => {
     const countries = useSelector(selectAllCounties);
+    const error = useSelector(selectError);
     const status = useSelector(selectStatus);
     const dispatch = useDispatch();
 
@@ -28,11 +30,13 @@ const CountiesList = ({ search, region }) => {
         }
     }, [dispatch]);
 
+    console.log(error);
+
     return (
         <>
             <GridSystem>
                 {status === "pending" || status === "idle"
-                    ? Array.from(new Array(24)).map((_, i) => (
+                    ? Array.from(new Array(12)).map((_, i) => (
                           <SkeletonListItem key={nanoid()} />
                       ))
                     : filteredCounties
@@ -47,6 +51,13 @@ const CountiesList = ({ search, region }) => {
             {isLoading && (
                 <Box display="flex" justifyContent="center" marginTop="25px">
                     <CircularProgress />
+                </Box>
+            )}
+            {error && (
+                <Box>
+                    <Typography color="error" variant="h3" fontWeight="bold">
+                        API Error :(
+                    </Typography>
                 </Box>
             )}
         </>

@@ -14,9 +14,13 @@ const initialState = {
 export const fetchAllCounties = createAsyncThunk(
     "countries/fetchAllCounties",
     async () => {
-        const { data } = await axios.get(ALL_COUNTRIES_URL);
+        try {
+            const { data } = await axios.get(ALL_COUNTRIES_URL);
 
-        return data;
+            return data;
+        } catch (error) {
+            throw error;
+        }
     }
 );
 
@@ -37,12 +41,17 @@ const countriesSlice = createSlice({
             .addCase(fetchAllCounties.fulfilled, (state, action) => {
                 state.status = "fulfilled";
                 state.countries = action.payload;
+            })
+            .addCase(fetchAllCounties.rejected, (state, action) => {
+                state.status = "rejected";
+                state.error = action.error;
             });
     },
 });
 
 export const selectDisplayedAmount = (state) => state.countries.displayed;
 export const selectStatus = (state) => state.countries.status;
+export const selectError = (state) => state.countries.error;
 export const selectAllCounties = (state) => state.countries.countries;
 
 export const { increaseDisplayedAmount } = countriesSlice.actions;
