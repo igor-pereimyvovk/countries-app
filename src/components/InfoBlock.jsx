@@ -9,8 +9,6 @@ import { getCountryInfo } from "../features/getCountryInfo";
 const InfoBlock = ({ country }) => {
     const [borders, setBorders] = useState([]);
 
-    console.log(country);
-
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,15 +16,16 @@ const InfoBlock = ({ country }) => {
     }, [country]);
 
     const fetchBorders = async () => {
-        const result = [];
-        if (country?.borders) {
-            for (const border of country.borders) {
-                const { data } = await axios.get(
-                    `https://restcountries.com/v3.1/alpha/${border}`
-                );
-                result.push(data[0].name.common);
-            }
-            setBorders(result);
+        const stringBorders = country?.borders?.join(",");
+        if (stringBorders) {
+            const { data } = await axios.get(
+                `https://restcountries.com/v3.1/alpha?codes=${stringBorders}`
+            );
+            const bordersList = data.map((border) => ({
+                name: border.name.common,
+                code: border.cca3,
+            }));
+            setBorders(bordersList);
         }
     };
 
@@ -127,10 +126,10 @@ const InfoBlock = ({ country }) => {
                 {borders.length > 0 ? (
                     borders.map((border) => (
                         <BorderButton
-                            key={border}
-                            onClick={() => navigate(`/country/${border}`)}
+                            key={border.code}
+                            onClick={() => navigate(`/country/${border.code}`)}
                         >
-                            {border}
+                            {border.name}
                         </BorderButton>
                     ))
                 ) : (

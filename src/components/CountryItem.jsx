@@ -3,15 +3,12 @@ import { Box, Typography } from "@mui/material";
 import ItemWrapper from "./UI/ItemWrapper";
 import ItemText from "./UI/ItemText";
 import ItemAllText from "./UI/ItemAllText";
-import { useSelector } from "react-redux";
-import { selectStatus } from "../store/countries/countriesSlice";
 
 const CountryItem = ({ country }) => {
-    const status = useSelector(selectStatus);
     const theme = useTheme();
 
     return (
-        <ItemWrapper to={`/country/${country.name.official}`}>
+        <ItemWrapper to={`/country/${country.cca3}`}>
             <Box
                 height="158px"
                 sx={{

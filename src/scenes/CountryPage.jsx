@@ -8,17 +8,23 @@ import BackButton from "../components/UI/BackButton";
 import InfoBlock from "../components/InfoBlock";
 
 const CountryPage = () => {
-    const [country, setCountry] = useState();
-    const { countryName } = useParams();
+    const [country, setCountry] = useState(null);
+    const { countryCode } = useParams();
     const theme = useTheme();
 
     useEffect(() => {
         fetchCountry();
-    }, [countryName]);
+
+        return () => setCountry(null);
+    }, [countryCode]);
+
+    useEffect(() => {
+        console.log("rendered");
+    }, []);
 
     const fetchCountry = async () => {
         const { data } = await axios.get(
-            `https://restcountries.com/v3.1/name/${countryName}`
+            `https://restcountries.com/v3.1/alpha/${countryCode}`
         );
         setCountry(data[0]);
     };

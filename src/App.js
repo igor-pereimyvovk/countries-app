@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./scenes/HomePage";
 import Navbar from "./components/Navbar";
 import CountryPage from "./scenes/CountryPage";
+import { nanoid } from "@reduxjs/toolkit";
 
 function App() {
     const mode = useSelector(selectMode);
@@ -22,7 +23,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route
-                            path="/country/:countryName"
+                            path="/country/:countryCode"
                             element={<CountryPage />}
                         />
                     </Routes>

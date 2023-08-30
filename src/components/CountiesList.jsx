@@ -30,8 +30,6 @@ const CountiesList = ({ search, region }) => {
         }
     }, [dispatch]);
 
-    console.log(error);
-
     return (
         <>
             <GridSystem>
@@ -43,7 +41,7 @@ const CountiesList = ({ search, region }) => {
                           .slice(0, amount)
                           .map((country) => (
                               <CountryItem
-                                  key={country.population}
+                                  key={country.cca3}
                                   country={country}
                               />
                           ))}
