@@ -4,7 +4,13 @@ import { useSelector } from "react-redux";
 import { selectMode } from "./store/mode/modeSlice";
 import { useMemo } from "react";
 import { themeSettings } from "./theme";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {
+    BrowserRouter,
+    HashRouter,
+    Navigate,
+    Route,
+    Routes,
+} from "react-router-dom";
 import HomePage from "./scenes/HomePage";
 import Navbar from "./components/Navbar";
 import CountryPage from "./scenes/CountryPage";
@@ -18,16 +24,17 @@ function App() {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Container maxWidth="container1440px">
-                <BrowserRouter>
+                <HashRouter>
                     <Navbar />
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="*" element={<Navigate to="/home" />} />
+                        <Route path="/home" element={<HomePage />} />
                         <Route
                             path="/country/:countryCode"
                             element={<CountryPage />}
                         />
                     </Routes>
-                </BrowserRouter>
+                </HashRouter>
             </Container>
         </ThemeProvider>
     );
