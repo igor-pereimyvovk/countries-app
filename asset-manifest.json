@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/ecommerce-product-page-app/static/js/main.5b961c9b.js",
-    "index.html": "/ecommerce-product-page-app/index.html",
-    "main.5b961c9b.js.map": "/ecommerce-product-page-app/static/js/main.5b961c9b.js.map"
+    "main.js": "/countries-app/static/js/main.5b961c9b.js",
+    "index.html": "/countries-app/index.html",
+    "main.5b961c9b.js.map": "/countries-app/static/js/main.5b961c9b.js.map"
   },
   "entrypoints": [
     "static/js/main.5b961c9b.js"
